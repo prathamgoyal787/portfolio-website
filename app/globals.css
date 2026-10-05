@@ -20,7 +20,8 @@ canvas{display:block}
 @keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
 
 /* ---------- fixed chrome ---------- */
-.brand{position:fixed;left:clamp(1rem,3vw,2.2rem);top:1.1rem;z-index:40;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;color:#fff;mix-blend-mode:difference}
+.brand{position:fixed;left:clamp(1rem,3vw,2.2rem);top:1.1rem;z-index:40;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;color:#fff;mix-blend-mode:difference;opacity:0;pointer-events:none;transition:opacity .3s}
+.brand.on{opacity:1;pointer-events:auto}
 .route{position:fixed;right:clamp(.8rem,2vw,1.6rem);top:50%;transform:translateY(-50%);z-index:40;color:#fff;mix-blend-mode:difference}
 .route ol{list-style:none;display:grid;gap:1.15rem;position:relative}
 .route ol::before{content:"";position:absolute;right:4px;top:6px;bottom:6px;width:2px;background:currentColor;opacity:.3}
