@@ -283,6 +283,7 @@ if (!REDUCED){
 }
 
 var routeLinks = Array.prototype.slice.call(document.querySelectorAll('.route a'));
+var brand = document.querySelector('.brand');
 var scenes = ['top','work','badminton','reading','music','ai','contact'].map(function(id){ return $(id); });
 var ridges = Array.prototype.slice.call(document.querySelectorAll('.ridge'));
 var sunEl = $('sun'), sunrise = $('sunrise'), moon = $('moon'), workEl = $('work'), helloEl = $('contact');
@@ -302,6 +303,7 @@ function frame(t){
   var cur = 0;
   scenes.forEach(function(el, i){ var r = el.getBoundingClientRect(); if (r.top < vh * 0.5) cur = i; });
   routeLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  brand.classList.toggle('on', cur > 0);
 
   if (!REDUCED){
     /* landscape ridges drift slowly */
@@ -334,6 +336,7 @@ else {
     var cur = 0, vh = window.innerHeight;
     scenes.forEach(function(el, i){ if (el.getBoundingClientRect().top < vh * 0.5) cur = i; });
     routeLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+    brand.classList.toggle('on', cur > 0);
     requestAnimationFrame(loop); })(0);
 }
 })();
