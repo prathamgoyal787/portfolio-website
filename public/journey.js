@@ -296,6 +296,29 @@ $('copy').addEventListener('click', function(){
   else location.href = 'mailto:' + addr;
 });
 
+/* start the journey: rush past the hero, then cruise down until the visitor clicks, scrolls or presses a key */
+if (!REDUCED) $('startJourney').addEventListener('click', function(e){
+  e.preventDefault();
+  var pos = window.scrollY, speed = 0, last = performance.now(), running = true;
+  var STOPS = ['pointerdown','wheel','touchstart','keydown'];
+  function stop(){
+    running = false;
+    STOPS.forEach(function(t){ window.removeEventListener(t, stop); });
+  }
+  STOPS.forEach(function(t){ window.addEventListener(t, stop, {passive:true}); });
+  function step(now){
+    if (!running) return;
+    var vh = window.innerHeight, dt = Math.min(250, now - last) / 1000; last = now;
+    var target = pos < workEl.offsetTop ? vh * 3 : vh * 0.6;   /* px per second: fast through the hero, steady after */
+    speed += (target - speed) * Math.min(1, dt * 6);
+    var max = document.documentElement.scrollHeight - vh;
+    pos = Math.min(max, pos + speed * dt);
+    window.scrollTo({top:pos, behavior:'instant'});
+    if (pos >= max) stop(); else requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+});
+
 function frame(t){
   var vh = window.innerHeight, y = window.scrollY;
 
