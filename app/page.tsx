@@ -73,7 +73,7 @@ export default function Home() {
           </p>
           <p className="hero-note">This page is a short journey from night to morning. Scroll, and stop wherever something looks interesting.</p>
           <div className="hero-actions">
-            <a className="btn solid" href="#work" style={vars({ "--fg": "var(--moon)", "--bg": "var(--night)" })}>Start the journey</a>
+            <a className="btn solid" id="startJourney" href="#work" style={vars({ "--fg": "var(--moon)", "--bg": "var(--night)" })}>Start the journey</a>
             <a className="btn" href={`mailto:${EMAIL}`}>Email me</a>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function Home() {
               <a className="btn" href={GITHUB}>GitHub</a>
               <a className="btn" href={RESUME}>Download résumé</a>
             </div>
-            <p className="fine">Open to new roles. Based in Gurugram, India. &copy; 2026 Pratham Goyal.</p>
+            <p className="fine">Open to roles anywhere in India or remote. &copy; 2026 Pratham Goyal.</p>
           </div>
         </footer>
       </main>
